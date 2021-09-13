@@ -3,6 +3,11 @@ from celery.utils.log import get_task_logger
 
 from django.core.management import call_command
 
+from django.core.mail import send_mail
+
+import accounts.models
+import quiz.models
+
 
 logger = get_task_logger(__name__)
 
@@ -16,8 +21,10 @@ def sample_task():
 @shared_task
 def send_email_report():
     call_command('email_report')
-#
-#
-# if __name__ == '__main__':
-#     sample_task()
-#     print(__name__)
+
+
+@shared_task
+def send_email_hello():
+    call_command('send_hello')
+
+
