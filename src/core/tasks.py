@@ -11,12 +11,10 @@ import quiz.models
 
 logger = get_task_logger(__name__)
 
-
 @shared_task
 def sample_task():
     logger.info(">>>>> THE SAMPLE TASK JUST RUN <<<<<")
     # print('test')
-
 
 @shared_task
 def send_email_report():
@@ -25,6 +23,6 @@ def send_email_report():
 
 @shared_task
 def send_email_hello():
-    call_command('send_hello')
+    call_command('send_message_hello')
 
 
