@@ -5,10 +5,6 @@ from django.core.management import call_command
 
 from django.core.mail import send_mail
 
-import accounts.models
-import quiz.models
-
-
 logger = get_task_logger(__name__)
 
 @shared_task
@@ -21,5 +17,8 @@ def send_email_report():
     call_command('email_report')
 
 
+@shared_task
+def email_hello():
+    call_command('email_hello')
 
 
