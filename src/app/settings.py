@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'accounts.apps.AccountsConfig',
     'quiz.apps.QuizConfig',
+    'tasks.apps.TasksConfig',
 ]
 
 MIDDLEWARE = [
@@ -159,6 +160,7 @@ ADMINS = [("testuser", "test_admin@test.com"), ]
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "amqp://rabbitmq:5672")
 # CELERY_RESULT_BACKEND = os.environ.get("CELERY_BACKEND", "redis://redis:6379/0")
 
+
 CELERY_BEAT_SCHEDULE = {
     "sample_task": {
         "task": "core.tasks.sample_task",
@@ -168,8 +170,8 @@ CELERY_BEAT_SCHEDULE = {
         "task": "core.tasks.send_email_report",
         "schedule": crontab(minute="*/1"),
     },
-    "send_email_hello": {
-        "task": "core.tasks.send_email_hello",
+        "email_hello": {
+        "task": "core.tasks.email_hello",
         "schedule": crontab(hour="*/24"),
     },
 
